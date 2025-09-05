@@ -1,3 +1,18 @@
+Package: com.kjcracks.clutch
+Version: 2.0.4
+Architecture: iphoneos-arm
+Maintainer: KJCracks <unknown@unknown.com>
+Depends: firmware (>= 6.0), firmware (<= 10.3.4)
+Filename: debs/com.kjcracks.clutch_2.0.4_iphoneos-arm.deb
+Size: 457648
+MD5sum: f87af3b9bb9d7c69c5a5b6290697a9b3
+SHA1: ec6feae66de70bd39a1bbedea50b13dce5520720
+SHA256: d4a5bd485ec8cec21be0d9e9301a2952a5798d1f62a96b50f6ef7e99e82dbd97
+Section: Terminal Support
+Description: Clutch is a high-speed iOS decryption tool. It is used for decrypting apps currently installed and usable on the device.
+Author: KJCracks <unknown@unknown.com>
+Name: Clutch 2.0.4
+
 Package: com.linusyang.ytbnoad
 Version: 0.1
 Architecture: iphoneos-arm
@@ -277,6 +292,23 @@ Homepage: http://www.youtube.com/user/ShadowLee19
 Description: Winocm's iOS kexec utils, compiled binaries.
 Author: Winocm <winocm@icloud.com>
 Name: iOS kexec utils
+
+Package: com.vsz.redeb
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: T.Herak <50dc856b@opayq.com>
+Depends: bash (>= 4.0.17-13), coreutils (>= 8.12-12p), grep (>= 2.5.4-3), sed (>= 4.1.5-7), gawk (>= 3.1.6-2p), apt7 (>= 0.7.25.3-6)
+Filename: debs/com.vsz.redeb_1.0.3_iphoneos-arm.deb
+Size: 3566
+MD5sum: df24b94e6e36d96231ffe49cb8a97cc7
+SHA1: a78d39ce50d219589fe0f1a85a5ddf06fd613291
+SHA256: 92946959e37e394db156fcee71d45526b50edbe0a07f19350f0e97e54a48d558
+Section: Utilities
+Priority: extra
+Description: Repackage any of your tweaks locally, without the need to download it from Cydia again. This is super usefull when there is an update of your until now perfectly working tweak in Cydia and you want to make a backup of the version installed. Normally you wouldn't be able to backup anything because it is possible to fetch only the most current version of your tweak and so you would be lost. Not anymore :)))
+Author: T.Herak <50dc856b@opayq.com>
+Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
+Name: redeb
 
 Package: repo.biteyourapple.net.paragon
 Version: 1.0.0
