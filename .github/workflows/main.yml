@@ -19,7 +19,7 @@ jobs:
       - name: Run update script
         run: |
           cd repo
-          bash update.sh
+          bash ./update.sh
 
       - name: Commit updated Packages
         run: |
