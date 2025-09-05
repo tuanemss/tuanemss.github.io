@@ -3,8 +3,8 @@ name: repo update
 on:
   push:
     paths:
-      - "debs/**"
-      - "update.sh"
+      - "repo/debs/**"
+      - "repo/update.sh"
 
 jobs:
   build:
@@ -17,16 +17,16 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y dpkg-dev bzip2 dos2unix
 
       - name: Fix line endings (Windows → Unix)
-        run: dos2unix update.sh
+        run: dos2unix repo/update.sh
 
       - name: Make update.sh executable
-        run: chmod +x update.sh
+        run: chmod +x repo/update.sh
 
       - name: List files (debug)
         run: ls -l
 
       - name: Run update script
-        run: ./update.sh
+        run: ./repo/update.sh || { echo "Update script failed"; exit 1; }
 
       - name: Commit updated Packages
         run: |
