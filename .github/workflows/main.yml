@@ -3,7 +3,7 @@ name: Build APT Repo
 on:
   push:
     paths:
-      - "debs/**"
+      - "repo/debs/**"
       - "update.sh"
 
 jobs:
