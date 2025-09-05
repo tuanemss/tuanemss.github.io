@@ -26,6 +26,7 @@ jobs:
         run: ls -l
 
       - name: Run update script
+        cd repo
         run: bash ./repo/update.sh || { echo "Update script failed"; exit 1; }
 
       - name: Commit updated Packages
