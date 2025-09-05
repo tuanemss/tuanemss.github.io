@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "repo/debs/**"
-      - "repo/update.sh"
+      - "repo/./update.sh"
 
 jobs:
   build:
