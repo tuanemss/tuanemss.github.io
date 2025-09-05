@@ -30,14 +30,5 @@ jobs:
            cd repo
            bash ./repo/update.sh || { echo "Update script failed"; exit 1; }
 
-      - name: Commit updated Packages
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add Packages Packages.bz2
-          if ! git diff --cached --quiet; then
-              git commit -m "Update Packages"
-              git push
-          else
               echo "No changes to commit"
           fi
