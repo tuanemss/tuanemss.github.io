@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "repo/debs/**"
-      - "repo/./update.sh"
+      - "repo/update.sh"
 
 jobs:
   build:
@@ -17,12 +17,14 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y dpkg-dev bzip2
 
       - name: Run update script
-        run: bash update.sh
+        run: |
+          cd repo
+          bash update.sh
 
       - name: Commit updated Packages
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add Packages Packages.bz2
+          git add repo/Packages repo/Packages.bz2
           git commit -m "Update Packages" || echo "No changes to commit"
           git push
