@@ -1,4 +1,4 @@
-name: repo update
+name: repo updates
 
 on:
   push:
