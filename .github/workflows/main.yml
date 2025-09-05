@@ -1,4 +1,4 @@
-name: repo update
+name: repo updates
 
 on:
   push:
@@ -28,7 +28,4 @@ jobs:
       - name: Run update script
         run: |
            cd repo
-           bash ./repo/update.sh || { echo "Update script failed"; exit 1; }
-
-              echo "No changes to commit"
-          fi
+           bash ./update.sh || { echo "Update script failed"; exit 1; }
