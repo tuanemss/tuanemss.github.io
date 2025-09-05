@@ -1,22 +1,3 @@
-Package: repo.biteyourapple.net.paragon
-Name: Paragon
-Version: 1.0.0
-Architecture: iphoneos-arm
-Author: BYA Repository
-Filename: debs/paragon_1.0.0_iphoneos-arm.paragon.deb
-Depends: firmware (>= 6.0), mobilesubstrate, vn.gsm.dreamboard
-Conflicts: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
-Replaces: com.zmaster.androidlockxt, repo.biteyourapple.net.androidlockxt
-Depiction: http://repo.biteyourapple.net/depiction/dep.php?name=paragon
-Description: Paragon is the most realistic Windows Phone 8 theme for your iPhone!
-Homepage: http://www.biteyourapple.net
-Maintainer: Redenfire <redenfire@gmail.com>
-Section: Themes
-Sponsor: biteyourapple <http://www.biteyourapple.net>
-Size: 2113572
-MD5sum: 78a926860ca9ac8f47e4204c62cb7a88
-SHA1: 87528a1f1b006fd909650f8d5ef2b54f6e149920
-SHA256: 03c09adece479bebbd4bf014321b721c8e2f6fecf8712ae0c3fdbbb7f5bb5862
 
 Package: com.ravirajm.torch
 Name: Torch
