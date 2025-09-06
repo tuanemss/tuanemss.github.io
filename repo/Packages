@@ -309,6 +309,22 @@ Tag: role::hacker
 Author: tuanem
 Name: checkshsh
 
+Package: com.tuanem.checkshsh
+Version: 0.0.1-4+debug
+Architecture: iphoneos-arm
+Maintainer: tuanem
+Installed-Size: 1452
+Filename: debs/com.tuanem.checkshsh_0.0.1-4+debug_iphoneos-arm.deb
+Size: 343798
+MD5sum: 24714a28bfc69de51e0ca9e45f6f41cc
+SHA1: 27a8763a05a2ea218799b497b607a5042d6ddd3b
+SHA256: 53c88fe3c4755d66e0910871a6444f2d267cc6f23e920b2679affbaf6b39bf46
+Section: System
+Description: An awesome tool of some sort!!
+Tag: role::hacker
+Author: tuanem
+Name: checkshsh
+
 Package: com.vsz.redeb
 Version: 1.0.3
 Architecture: iphoneos-arm
