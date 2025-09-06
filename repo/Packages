@@ -298,11 +298,11 @@ Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Depends: bash
-Filename: debs/neofetch-fixed.deb
-Size: 75892
-MD5sum: 1627394370be9eb1b56cd105141fb2cb
-SHA1: 51f2ece2c3f9bfdab29690a1956d9fbb92fad706
-SHA256: 9e7e7c0c11a012a99788e39c0da92d2a546d24afa3c84907a9fdc0e2c42d0005
+Filename: debs/neofetch.deb
+Size: 602
+MD5sum: 56777a85594016f9b27982c18e825329
+SHA1: f40f1c5e61d25d6519d43296f1f70aa56965acd0
+SHA256: 6404fc2215fde960144419f50f382d371c0f2d19ccda182448a044ffcaed0a3e
 Section: System
 Priority: optional
 Description: NeoFetch for iOS 4/5/6
