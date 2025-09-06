@@ -293,6 +293,21 @@ Description: Winocm's iOS kexec utils, compiled binaries.
 Author: Winocm <winocm@icloud.com>
 Name: iOS kexec utils
 
+Package: com.tuanem.neofetch
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: tuanem
+Depends: bash
+Filename: debs/neofetch-fixed.deb
+Size: 75892
+MD5sum: 1627394370be9eb1b56cd105141fb2cb
+SHA1: 51f2ece2c3f9bfdab29690a1956d9fbb92fad706
+SHA256: 9e7e7c0c11a012a99788e39c0da92d2a546d24afa3c84907a9fdc0e2c42d0005
+Section: System
+Priority: optional
+Description: NeoFetch for iOS 4/5/6
+Name: neofetch
+
 Package: com.tuanem.shshchecker
 Version: 1.0-1+debug
 Architecture: iphoneos-arm
