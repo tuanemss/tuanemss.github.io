@@ -1,3 +1,36 @@
+Package: com.hackyouriphone.classiclockscreen
+Version: 3.3.1k
+Architecture: iphoneos-arm
+Maintainer: iLeoLion <repo@hackyouriphone.org>
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), curl, firmware(<< 8.0) | org.coolstar.libclassictelephonyui (>= 1.1-1)
+Filename: debs/org.coolstar.classiclockscreen_3.3.1_iphoneos-arm.deb
+Size: 736186
+MD5sum: 7d5da71444883fec6d4273860d981ca3
+SHA1: 3959241070d7b0a0cd41b21a733aaa70351962e1
+SHA256: 225d085f3b8af7bd9b3f1b479efa56c9804c87e7afa322689dc676ffe83ff2ef
+Section: HYI - Tweaks
+Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Description: Hate the iOS 7 Lock Screen?
+Author: CoolStar, Jeremy Goulet, Phillip Tennen <repo@hackyouriphone.org>
+Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Name: ClassicLockScreen
+
+Package: com.isoftru.bochs
+Version: 1.0.0-1
+Architecture: iphoneos-arm
+Maintainer: isoftcom.com <isoftteamsupport@gmail.com>>
+Filename: debs/bochs.deb
+Size: 36844432
+MD5sum: 2fc90234ca64aec8d45d14b938b722c9
+SHA1: a1aeb6638d3a14378b4eefca73e4e38ee1fb5275
+SHA256: b4b076aa5fe88dc2dad22b3da9a329043b5efbc3c4eefb96f57f45a0273fc382
+Section: System
+Homepage: http://isoftcom.com/
+Description: Run Windows 3.11 and Windows 95 on your iPhone. It's slow, but worked.
+Author: isoftcom.com <isoftteamsupport@gmail.com>
+Dev: isoftru
+Name: Bochs (Win95 for iPhone)
+
 Package: com.kjcracks.clutch
 Version: 2.0.4
 Architecture: iphoneos-arm
