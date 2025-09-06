@@ -294,15 +294,15 @@ Author: Winocm <winocm@icloud.com>
 Name: iOS kexec utils
 
 Package: com.tuanem.checkshsh
-Version: 0.0.1-2+debug
+Version: 0.0.1-3+debug
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Installed-Size: 1456
-Filename: debs/com.tuanem.checkshsh_0.0.1-2+debug_iphoneos-arm.deb
-Size: 341488
-MD5sum: 9995bba6c215135a6665b47a9f2f7b85
-SHA1: 2780a7fb4f10989a6f764898d17e655562b78b0c
-SHA256: 560de93f42aaa1f8c9f21b2092dc7c1742ebe461a69f572300ebba2576295e88
+Filename: debs/com.tuanem.checkshsh_0.0.1-3+debug_iphoneos-arm.deb
+Size: 341234
+MD5sum: bfea0921ac2ed686a0b33d305165c0bf
+SHA1: 83a7c680a3d3589d047166991a840d0ec1824d36
+SHA256: b4a3faa7a9f40f55f7e856280310455174ae1b4eb996dfc37648474aed18f5b1
 Section: System
 Description: An awesome tool of some sort!!
 Tag: role::hacker
