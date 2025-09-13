@@ -347,21 +347,6 @@ Description: Winocm's iOS kexec utils, compiled binaries.
 Author: Winocm <winocm@icloud.com>
 Name: iOS kexec utils
 
-Package: com.tuanem.neofetch
-Version: 1.0
-Architecture: iphoneos-arm
-Maintainer: tuanem
-Depends: bash
-Filename: debs/neofetch.deb
-Size: 87026
-MD5sum: fac100f0827ae890dadadb4bfe57e814
-SHA1: 9d6a7a65923498735e6eb226e97e27b8bd1db605
-SHA256: 41af3594c82977fae8a5a24b0d676ff2833a72152b3ed77a9c79cb3e328efa43
-Section: System
-Priority: optional
-Description: NeoFetch for iOS 4/5/6
-Name: neofetch
-
 Package: com.tuanem.shshchecker
 Version: 1.0-1+debug
 Architecture: iphoneos-arm
@@ -394,6 +379,21 @@ Description: Repackage any of your tweaks locally, without the need to download 
 Author: T.Herak <50dc856b@opayq.com>
 Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
 Name: redeb
+
+Package: neofetch
+Version: 7.1.0.2
+Architecture: iphoneos-arm
+Maintainer: KawaiiZenbo
+Depends: coreutils, gawk, grep, bash, coreutils-bin, system-cmds, darwintools
+Filename: debs/neofetch.deb
+Size: 86880
+MD5sum: 5321d5d7158571ce3ca54e8900d89fb6
+SHA1: 2d0f8ed382266bf162fc2830cc14cbf86a2efa86
+SHA256: 77a3518c53177917c094c601221967512c7a2edd3a304b47aa8c23ad22c175af
+Section: Terminal Support
+Description: A command-line system information tool written in bash 3.2+ from https://github.com/dylanaraps/neofetch, packaged for iOS
+Author: dylanaraps
+Name: neofetch
 
 Package: repo.biteyourapple.net.paragon
 Version: 1.0.0
