@@ -395,6 +395,23 @@ Description: A command-line system information tool written in bash 3.2+ from ht
 Author: dylanaraps
 Name: neofetch
 
+Package: org.jyvee8games.itunesfix
+Version: 0.1-5+debug
+Architecture: iphoneos-arm
+Maintainer: LegacyGuides <admin@legacyios.com>
+Installed-Size: 464
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 7.0)
+Filename: debs/org.jyvee8games.itunesfix_0.1-5+debug_iphoneos-arm.deb
+Size: 95028
+MD5sum: cb7ae2018934af5c4084da671940dc3b
+SHA1: f2e10f114eebcc06a18bd736e584d03e61e5695b
+SHA256: ed878b9e364e8d62977b98fd928d5b9c3d6b3940b929cc5af5c547a15447a80d
+Section: Tweaks
+Description: A fix for the iOS 7 AppStore! credits to bag.xml and requis for the oringinal iTunesStoreX tweak
+Author: Jyvee <jyveeanimate@jyveegames.org>
+Icon: file:///Library/Application%20Support/org.jyvee8games.itunesfix/Icon.png
+Name: iTunesStoreX7 (BETA)
+
 Package: repo.biteyourapple.net.paragon
 Version: 1.0.0
 Architecture: iphoneos-arm
