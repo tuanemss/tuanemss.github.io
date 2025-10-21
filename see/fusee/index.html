@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>fusée web</title>
+</head>
+
+<body>
+  <h1>fusée</h1>
+
+  <h3>payload</h3>
+  <div>
+    <form id="mainForm">
+
+      <p>
+        <input type="radio" name="payload" id="uploaded" value="uploaded" checked>
+        <label for="uploaded"></label>
+        <input type="file" id="payloadUpload">
+      </p>
+    </form>
+
+    <button id="goButton">go exploit</button>
+  </div>
+
+  <h3>log</h3>
+  <textarea cols="60" rows="7" id="output"></textarea>
+
+  <script src="./fusee.bin.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>

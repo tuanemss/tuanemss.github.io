@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <p><a href="../index.html"><</a></p>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ipodrootfs</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div align="left">
+        <h1>Installing and booting the iPod4,1 rootfs on the iPhone3,1</h1>
+        <h4>2022年6月14日</h4>
+        <p><b>Disclaimer:</b> This is extremely buggy. While the SoC are the same between the iPod touch 4th generation and the iPhone 4, there are many hardware differences that create many driver issues when booting the iPod firmware on an iPhone. Currently, the features I have confirmed to not work are Audio, WiFi, Bluetooth, and Camera. I have essentially done the reverse of the iOS 7 on iPod touch 4th generation project, so many of the issues and instabilities that exist within that project exist here too. Expect hangs, kernel panics, and bugs. This is purely for experimental purposes, and a result of getting bored at 2 am.</p>
+        <p>As of now, I have only been able to test this on a Pre-2012 GSM iPhone 4 (iPhone3,1). I do not have access to a CDMA (iPhone3,3) or 2012 GSM iPhone 4 (iPhone3,2), so if you attempt this with those devices, your mileage may vary.</p>
+        <h2>Here is what you’ll need:</h2>
+        <p>It’s a good day for you Windows users as this is entirely done on Windows from start to finish. I was able to get this working on a Windows 7 VM through VMware. Mac users, this can be done on Mac, just with a few work arounds, which I'll include a tutorial for another day.</p>
+        <p><a href="https://github.com/iSuns9/Sund0wn/blob/master/Sund0wn-1.1.exe">sund0wn</a> (version 1.1)
+        <br><a href="https://secure-appldnld.apple.com/iOS6.1/031-3211.20140221.Placef/iPod4,1_6.1.6_10B500_Restore.ipsw">6.1.6 firmware for iPod touch 4th generation</a> (iPod4,1_6.1.6_10B350_Restore.ipsw)
+        <br><a href="https://secure-appldnld.apple.com/iOS6/Restore/041-0807.20120919.soT6X/iPod4,1_6.0_10A403_Restore.ipsw">6.0 firmware for iPod touch 4th generation</a> (iPod4,1_6.0_10A403_Restore.ipsw)
+        <br><a href="https://secure-appldnld.apple.com/iOS6/Restore/041-7175.20120919.wvv7Y/iPhone3,1_6.0_10A403_Restore.ipsw">6.0 firmware for iPhone 4</a> (iPhone3,1_6.0_10A403_Restore.ipsw)
+        <br><a href="https://sites.google.com/a/iphone-dev.com/files/home/redsn0w_win_0.9.15b3.zip?attredirects=0&d=1">redsn0w</a> (version 0.9.15b3)
+        <br><a href="https://secure-appldnld.apple.com/iTunes11/091-9270.20130816.Qw23e/iTunes64Setup.exe">iTunes 11.0</a></p>
+        <h2>Creating the IPSW:</h2>
+        <p>To begin, open sund0wn and select the iPhone 4 6.0 firmware file and make sure you select “tethered” under “kind of downgrade”. After that, click Create IPSW.</p>
+        <p>Next, close sund0wn and open it again, and repeat the same steps but with the 6.1.6 iPod touch 4th generation IPSW.</p>
+        <p>You should now have two IPSWs on your Desktop:</p>
+        <code><b>sund0wn_iPod4,1_6.1.6_10B500_tethered.ipsw</b></code>
+        <br>
+        <code><b>sund0wn_iPhone3,1_6.0_10A403_tethered.ipsw</b></code>
+        </div>
+        <p>Extract the contents of both IPSWs into separate folders.</p>
+        <p>Within the folders, you’ll find several ramdisks and firmware files. The files you’re going to be moving around are the very large “dmg” files.</p>
+        <p>Within the sund0wn iPod touch 6.1.6 IPSW, there is a ramdisk named <code><b>058-2543-001.dmg</b></code>. This is the rootfs. Rename this rootfs ramdisk to <code><b>038-6494-001.dmg</b></code>.</p>
+        <p>Within the sund0wn iPhone 4 6.0 IPSW, delete the ramdisk named <code><b>038-6494-001.dmg</b></code> and replace it with the renamed iPod touch rootfs ramdisk.</p>
+        <p>Package all the contents of the sund0wn iPhone 4 folder into a zip file. Name it whatever you want, but make the extension “.ipsw”. I named mine <code><b>iPhone3,1_6.1.6_10B500_Restore.ipsw</b></code>.</p>
+        <p>Next, put your iPhone 4 into DFU mode. If you’re following this tutorial, I’d expect you know how to enter DFU. If not, google the instructions.</p>
+        <p>Using redsn0w (iREB, iFaith, sn0wbreeze, or even iPwnder32 [if you have access to a mac]), to enter pwned DFU mode.</p>
+        <p>Restore to that custom packaged IPSW (<b><code><b>iPhone3,1_6.1.6_10B500_Restore.ipsw</b></code></b>) through iTunes 11.0, and once the restore finishes, the device will be in recovery mode.</p>
+        <h2>Booting the device (redsn0w):</h2>
+        <p>To boot the device, put the device back into DFU mode, and open redsn0w.</p>
+        <p>In redsn0w, go to Extras, Select IPSW, and then select the iPod touch 4th generation <b>6.0</b> firmware file. (Make sure this is 6.0, not 6.1.6. The last version of redsn0w never supported anything past 6.0. Also, make sure it is the iPod touch firmware, not the iPhone).</p>
+        <p>Then click “Just boot”. It may fail a few times, just repeat the previous two steps, and try again.</p>
+        <p>You should eventually reach the setup of the device. The computer and redsn0w will recognize your iPhone 4 as an iPod touch. Unfortunately, as WiFi drivers are <b>currently</b> not working, you have to plug the “iPhone touch” into iTunes to activate. After that, the device should be set up and working.</p>
+        <p>To reiterate, this is incredibly buggy and while it is more stable than iOS 7 on the iPod touch 4th generation, it is still very buggy and will freeze at random times. I noticed pressing volume up or down causes the device to go haywire at times. Just go into this knowing this was done purely for fun and not to realistically be used.</p>
+        <h2>Booting the device (irecovery):</h2>
+        <p><em>If you don't want to use redsn0w, you can also boot using irecovery. The files to boot the device are found </em><a href="https://github.com/lychitree/ipodrootfs-boot" rel="noopener nofollow ugc" target="_blank"><em>here</em></a><em>. I've only tested this on an iPhone3,1 (Pre-2012 GSM).</em></p>
+        <p>To boot with irecovery, run the following commands in this order:</p>
+        <pre><b><code>irecovery -f ibss
+irecovery -f ibec
+irecovery -f devicetree
+irecovery -c devicetree
+irecovery -f kernelcache
+irecovery -c bootx
+</code></b></pre>
+        <p>The iBSS and iBEC come from the stock 6.1.6 IPSW. iBSS has an RSA patch on it through iBoot32Patcher and iBEC has an RSA, ticket, and -v boot-arg patch on it through iBoot32Patcher.</p>
+        <p>DeviceTree and Kernelcache also come from the iPod4,1 6.1.6 (10B500) IPSW. DeviceTree is decrypted using, while the Kernelcache is untouched from the IPSW.</p>
+        <h2>Making adjustments to iPod rootfs:</h2>
+        <p>If you would like to make adjustments to the iPod touch rootfs, to potentially add drivers or what not, instead of creating a sund0wn 6.1.6 IPSW, you can decrypt a 6.1.6 rootfs from the stock firmware, edit files within the rootfs, and rebuild the rootfs.</p>
+        <p>To do so, use xpwn’s dmg. Firmware keys are found <a href="https://www.theiphonewiki.com/wiki/Firmware_Keys" rel="noopener nofollow ugc" target="_blank">here</a>.</p>
+        <p><b><code>./dmg extract 058-2543-001.dmg decrootfs.dmg -k 7fc7156c452e9c6d05983c5286c2ffd51a305c4bd61a7a5161a567b3b5ef88e1ff786ee9</code></b></p>
+        <p>Edit files within decrootfs.dmg</p>
+        <p><b><code>./dmg build decrootfs.dmg 038-6494-001.dmg</code></b></p>
+        <p>Afterward, place this dmg instead inside the sund0wn iPhone 4 6.0 IPSW and continue with the tutorial.</p>
+        <p>-lychi (2022)
+        </p>
+    </body>
+</html>

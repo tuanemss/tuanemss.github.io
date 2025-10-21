@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <p><a href="../index.html"><</a></p>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>odysseustether</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div align="left">
+        <h1>Tether downgrades with odysseusOTA2</h1>
+        <h4>2022年6月23日</h4>
+        <p>Presenting another useless tethered downgrade tutorial. I'm pretty sure this method has already been detailed before, but I'm sharing it again, I guess. This tutorial is primarily for Beta Firmwares. If you're not attempting to install beta firmware, I advise you use <a href="https://github.com/synackuk/n1ghtshade">n1ghtshade</a>.</p>
+        <img src="src/homescreen.png" width="200" height="auto">
+        <img src="src/settings.png" width="200" height="auto">
+        <br>
+        <h2>What you’ll need:</h2>
+        <p><a href="https://www.youtube.com/watch?v=fh0tB6fp0Sc">odysseusOTA2</a>
+        <br>
+        <a href="https://files.fm/u/azznnggz">odysseusOTA2 bundles for other devices</a>
+        <br>
+        dmg from xpwn
+        <br>
+        xpwntool from xpwn
+        <br>
+        <a href="https://github.com/dora2-iOS/iBoot32Patcher">iBoot32Patcher</a> (mine is from dora2-iOS)
+        <br>
+        <a href="https://github.com/dora2-iOS/ipwnder_lite">ipwnder_lite</a> (dora2-iOS)
+        <br>
+        <a href="https://www.theiphonewiki.com/wiki/Firmware_Keys">Firmware keys</a> for target firmware
+        <br>
+        Older version of <a href="https://api.tihmstar.net/builds/futurerestore/futurerestore-latest.zip">futurerestore</a>
+        <br>
+        libirecovery (brew)
+        </p>
+        <h2>Creating the custom firmware</h2>
+        <p>Extract everything into a folder. I titled my folder <code><b>tetherdowngrade</b></code> but it does not matter what it is titled.</p>
+        <img src="src/1.png" width="600" height="auto">
+        <br>
+        <p>Open a terminal window within the folder, and create a custom 8.4.1 firmware for your device. Out of the box, odysseusOTA2 has support for the iPhone 5 (GSM), iPhone 5 (Global), and iPhone 4S. Support for other A5 and A6 devices (except iPhone 5C) can be added with custom firmware bundles.</p>
+        <p>The command to create the custom firmware:</p>
+        <p><code><b>./ipsw iPhone5,2_8.4.1_12H321_Restore.ipsw custom.ipsw -memory -bbupdate</b></code></p>
+        <p>After the custom firmware is created, extract the rootfs of your target firmware. The name of the rootfs dmg can be found on the corresponding Firmware Keys page for the target version.</p>
+        <p>For iPhone5,2 9.0b1, the command to extract the rootfs:</p>
+        <p><code><b>unzip iPhone5,2_9.0_13A4254v_Restore.ipsw 058-21658-023.dmg</b></code></p>
+        <p>After the dmg is extracted, decrypt the rootfs using xpwn’s dmg. The key can be found at the same Firmware Keys page.</p>
+        <p>For iPhone5,2 9.0b1, the command to decrypt the rootfs:</p>
+        <p><b><code>./dmg extract 058-21658-023.dmg decrypted.dmg -k daf695058c94cb990778548466014d3895982799bdc2fa4451e1f5aec3d1024552eb1600</code></b></p>
+        <p>The next few steps are <b>for Beta firmware only</b>. Beta firmware have a string in the SystemVersion.plist that prevents them from being activated. Fortunately, it is easily removable, and the firmwares can be activated like any other release firmware.</p>
+        <p>To edit SystemVersion.plist, mount decrypted.dmg. Then, within the volume, navigate to /System/Library/CoreServices. Within this folder lies SystemVersion.plist.</p>
+        <p>Using a text editor with sudo, in this case, nano, open the plist file.</p>
+        <img src="src/5.png" width="500" height="auto">
+        <br>
+        <p>Now remove the following:</p>
+        <p><b><code>&lt;key&gt;ReleaseType&lt;/key&gt;</code></b>
+        <br>
+        <b><code>&lt;string&gt;Beta&lt;/string&gt;</code></b></p>
+        <p>This is what it should look like after.</p>
+        <img src="src/5b.png" width="500" height="auto">
+        <br>
+        <p>The following steps are back to being applicable for every firmware.</p>
+        <p>Convert the decrypted dmg to the UDZO format using xpwn’s dmg. If the rootfs is not in the UDZO format, the restore will fail prematurely. Do not forget this step.</p>
+        <p>The command to convert the decrypted dmg to UDZO:</p>
+        <p><b><code>./dmg build decrypted.dmg UDZO.dmg</code></b></p>
+        <p>Next, unzip the custom 8.4.1 firmware (custom.zip) and delete the 8.4.1 rootfs. In this case, it is titled <code><b>058-24110-023.dmg</b></code></p>
+        <img src="src/7.png" width="500" height="auto">
+        <br>
+        <p>Move the UDZO.dmg into the unzipped custom firmware.</p>
+        <img src="src/8.png" width="500" height="auto">
+        <br>
+        <p>Rename the UDZO.dmg to the name of the original 8.4.1 rootfs. The name can be found on the Firmware Keys page if the original name was forgotten. Make sure the name matches. The restore will not go through if the UDZO.dmg is not named properly.</p>
+        <img src="src/9.png" width="500" height="auto">
+        <br>
+        <p>Compress the files within the folder into a zip.</p>
+        <p>Move the zip back to the main folder, and delete the custom folder. The original 8.4.1 IPSW, the custom 8.4.1 IPSW, the target firmware rootfs, and decrypted.dmg can also be deleted.</p>
+        <p>Back in Terminal, grab shsh blobs. Make sure the device is plugged in before running the command.</p>
+        <p>The command to grab shsh blobs is</p>
+        <p><b><code>./idevicerestore -t Archive.zip</code></b></p>
+        <p>Put the device into DFU mode. Then, using ipwnder_lite, put the device into pwned DFU mode.</p>
+        <p><b><code>./ipwnder_lite -p</code></b></p>
+        <p>Restore the device:</p>
+        <p><b><code>./idevicerestore -w -e -d Archive.zip</code></b></p>
+        <img src="src/13.png" width="500" height="auto">
+        <br>
+        <p>I have encountered issues with certain target firmwares where ASR would fail to verify the filesystem. If you see “Filesystem Validated” and idevicerestore proceeds to send the filesystem, this is not an issue. For the versions where ASR does fail, I have not found a fix quite yet.</p>
+        <h2>Booting the device</h2>
+        <p>After the restore finishes, the device will perpetually hang on an Apple logo. This is where the tethered component comes in. The device needs to be manually booted with a computer, or it will continue to hang on the logo. If the device is rebooted, then a computer will be required to boot it.</p>
+        <p>The following steps are not required if the target firmware is a release firmware. The device can be booted using futurerestore.</p>
+        <p>The command to boot:</p>
+        <p><b><code>./futurerestore_macos —just-boot=“-v” —use-pwndfu &lt;targetfirmware.ipsw&gt;</code></b></p>
+        <p>To boot beta firmwares, the boot files will manually be created.</p>
+        <p>To begin, unzip the target beta firmware and extract iBSS, iBEC, DeviceTree, and kernelcache</p>
+        <img src="src/15.png" width="600" height="auto">
+        <br>
+        <p>Using xpwntool, decrypt the iBSS file. The IV and Key can be found at the Firmware Keys page.</p>
+        <p><b><code>. /xpwntool iBSS.n42.RELEASE.dfu ibssdec -iv 5e2bf5290fa084684c443ea6b351e56a -k b2a3c8a863e8e55ec0a9092d2ca62c0fb8901a6136840f84a87d8e212b3dleb1</code></b></p>
+        <p>Patch iBSS using iBoot32Patcher.</p>
+        <p><b><code>./iBoot32Patcher ibssdec ibsspwn --rsa</code></b></p>
+        <p>Rebuild the iBSS using xpwntool</p>
+        <p><b><code>./xpwntool ibsspwn iBSS -t iBSS.n42.RELEASE.dfu</code></b></p>
+        <img src="src/16.png" width="500" height="auto">
+        <br>
+        <p>Using xpwntool, decrypt the iBEC file. The IV and Key can be found at the Firmware Keys page.</p>
+        <p><b><code>./xpwntool iBEC.n42.RELEASE.dfu ibecdec -iv 7124c7d637851865abc3064d4bb64d16 -k 02917e966a72380a0f287393e5627503f4673a852c4cdd786fac104579eb4aa</code></b></p>
+        <p>Patch iBEC using iBoot32Patcher.</p>
+        <p><b><code>./iBoot32Patcher ibecdec ibecpwn --rsa --ticket -b “-v”</code></b></p>
+        <p>Rebuild the iBEC using xpwntool</p>
+        <p><b><code>./xpwntool ibecpwn iBEC -t iBSS.n42.RELEASE.dfu</code></b></p>
+        <img src="src/17.png" width="500" height="auto">
+        <br>
+        <p>Finally, decrypt the DeviceTree using xpwntool.</p>
+        <p><b><code>./xpwntool DeviceTree.n42ap.img3 devicetreedec -iv 9ba4620132ad3e189c411b990cbb873c -k db262a8e77c355162fd4c5dcc44350d6e227e4c290c0a1741dfdb3f4d6ef7b2b</code></b></p>
+        <p>Rebuild the decrypted DeviceTree</p>
+        <p><b><code>./xpwntool devicetreedec devicetree -t DeviceTree.n42ap.img3</code></b></p>
+        <p>Finally, boot using irecovery.</p>
+        <img src="src/18.png" width="500" height="auto">
+        <br>
+        <p>Run the following commands in this order after the device is in pwned DFU mode</p>
+        <pre><b><code>irecovery -f ibss
+irecovery -f ibec
+irecovery -f devicetree
+irecovery -c devicetree
+irecovery -f kernelcache.release.n42
+irecovery -c bootx
+</code></b></pre>
+        <img src="src/19.png" width="500" height="auto">
+        <br>
+        <p>The device will now boot, and you will be able to set up and activate it.</p>
+        <p>-lychi (2022)
+        </p>
+    </body>
+</html>

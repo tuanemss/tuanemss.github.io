@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <p><a href="../index.html"><</a></p>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dralogos</title>
+        <link rel="stylesheet" href="style.css">
+    <body>
+        <h1>Custom bootlogos with powdersn0w</h1>
+        <h4>2022年7月7日</h4>
+        <p>A pretty straight forward tutorial on how to create custom bootlogos for devices utilizing the iOS 7 iBoot exploit <a href="https://xerub.github.io/ios/iboot/2018/05/10/de-rebus-antiquis.html">De Rebus Antiquis<a> with Dora2-iOS's <a href="https://dora2ios.web.app/konayuki/">powdersn0w</a>. This tutorial is only for devices that can be used with the tool, so you <b>must</b> have iOS 7 shsh blobs for your device.
+        <h2>What you'll need</h2>
+        <p>
+        A jailbreak
+        <br>
+        Apple File Conduit 2 (afc2)
+        <br>
+        <a href="coolbooter.com">CoolBooter</a> (version 1.5)
+        <br>
+        Source image for bootlogo
+        <br>
+        <a href="https://dora2ios.web.app/konayuki/">powdersn0w</a> IPSW
+        <h2>Preparation</h2>
+        <p>To preface, you're going to need a device that has the same screen size as your target device to create the bootlogo. This means that in order to generate a bootlogo for a device with a 4" screen, you're going to need a device with a 4" screen that's jailbroken and with CoolBooter installed to create the logo (CoolBooterCLI does not work with this AFAIK, so you have to be on iOS 7 or above to create the logos). This is just from my exprience. If other devices work, good for you.</p>
+        <p>First add the CoolBooter repo in Cydia. The repo is <code><b>coolbooter.com</b></code></p>
+        <img src="src/addcb.PNG" width="200" height="auto">
+        <p>Install CoolBooter in Cydia. The latest version of CoolBooter has been rather unreliable, but CoolBooter 1.5 works just fine, so when installing, downgrade to 1.5. Afterwards, install Apple File Conduit 2. This will it allow you to get the custom logo file from the device onto your computer after creating it.</p>
+        <p>Open CoolBooter and install any version. I typically go with whatever is the oldest; The firmware file is usually the smallest so it takes less time to download and install.</p>
+        <p>Once the install is finished, CoolBooter will prompt you to reboot the device. Reboot the device, and set the device aside.</p>
+        <img src="src/reboot.PNG" width="200" height="auto">
+        <h2>Sourcing image for logo</h2>
+        <p>Bootlogos can only be as big as the resolution of the target device. So an iPhone 5 or an iPod touch 5th generation can only have a bootlogo as large as 1136 x 640. There is also a size cap as well. Though I'm not entirely sure what the max size for the image is. I generally stick to smaller images.
+        <p>For this tutorial, I'll be using a Mitsubishi logo, as my car is a Mitsubishi. I found the image on Google, and it's pretty small, coming in around 4 KB. It also is pretty small in resolution, so it is perfect for a bootlogo.</p>
+        <img src="src/logo.png" width="240" height="auto">
+        <br>
+        <h2>Creating the bootlogo</h2>
+        <p>Transfer the logo to the device in whichever way works best. I generally AirDrop it from my MacBook, but other ways work fine. The end goal is the get the image into the Camera roll of the device.</p>
+        <p>Once the image is in the camera roll, open the CoolBooter app and click the "Bootlogos" button in the bottom right.</p>
+        <p>Click the "Change Bootlogo" button which will then open the Camera Roll. Select the custom bootlogo you created, and click "Exit".</p>
+        <img src="src/newlogo.PNG" width="200" height="auto">
+        <p>A loading bar should appear with the text "Updating bootlogo". Once that finishes, the bootlogo is ready to be installed onto our device.</p>
+        <p>Go back to the computer and use any program that can interface with a device's raw filesystem if Apple File Conduit 2 is installed. I use iFunbox.</p>
+        <p>Within iFunbox, locate your device, and click "Raw File System".</p>
+        <p>Navigate to <code><b>/private/var/cbooter/</b></code> and find <code><b>CurrentLogo.img3</b></code>, not <code><b>CurrentLogo.png</b></code>. Transfer this file to your computer.</p>
+        <img src="src/currentlogo.png" width="600" height="auto">
+        <h2>Adding logo to powdersn0w firmware</h2>
+        <p>Using powdersn0w, generate a firmware file for your device. For the tutorial, I used an iPod touch 5th generation with iOS 7.1.2 blobs, and aimed for 6.1.3.</p>
+        <p>Extract the powdersn0w IPSW file, and locate the applelogo img3. For the iPod touch, it is named <code><b>applelogo@2x.s5l8942x.img3</b></code>. There is also a file named <code><b>applelogo7@2x.s5l8942x.img3</b></code>, do not touch this file.</p>
+        <img src="src/findlogo.png" width="600" height="auto">
+        <p>Delete this file and move the CurrentLogo.img3 that you extracted from the device into this folder.</p>
+        <p>Rename this file to what the original applelogo file was called. In this case, <code><b>applelogo@2x.s5l8942x.img3</b></code></p>
+        <img src="src/renamelogo.png" width="600" height="auto">
+        <h2>Restoring</h2>
+        <p>Now that the custom logo has been added to the extracted firmware, you can compress the entire folder into a zip file</p>
+        <img src="src/compress.png" width="600" height="auto">
+        <p>After compressing, move <code><b>Archive.zip</b></code> into the main folder and restore as normal.</p>
+        <p>As long as everything was done properly, there shouldn't be any errors during the restores.</p>
+        <p>If idevicerestore says it cannot find the applelogo file at the end of the restore, you didn't properly replace the applelogo file. The name might be incorrect.</p>
+        <p>When the restore finishes, you'll see the iOS 7 bootlogo, and then it'll flash and you'll see your custom bootlogo.</p>
+        <img src="src/boot.png" width="450" height="auto">
+        <p>-lychi (2022)</p>
+    </body>
+</html>
+
