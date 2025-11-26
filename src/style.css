@@ -1,12 +1,11 @@
 /* --- CÀI ĐẶT CHUNG & THEME MÀU TỐI --- */
 :root {
     --sidebar-width: 300px;
-    /* Bộ màu mới dựa trên hình ảnh */
-    --bg-main: #f0f2f5;      /* Nền trang sáng nhẹ */
-    --bg-card: #0a1a1a;      /* Nền card màu xanh đen tối */
-    --text-title: #ffffff;   /* Màu tiêu đề trắng */
-    --text-meta: #8f9f8f;    /* Màu thông tin phụ xanh xám nhạt */
-    --accent-color: #007bff; /* Màu highlight (cho link active) */
+    --bg-main: #f0f2f5;      
+    --bg-card: #0a1a1a;      
+    --text-title: #ffffff;   
+    --text-meta: #8f9f8f;    
+    --accent-color: #007bff; 
 }
 
 body {
@@ -16,18 +15,22 @@ body {
     display: flex;
 }
 
-/* --- 1. SIDEBAR (GIỮ NGUYÊN) --- */
+/* --- 1. SIDEBAR (SỬA ĐỂ NẰM BÊN PHẢI) --- */
 .sidebar {
     width: var(--sidebar-width);
     height: 100vh;
     position: fixed;
     top: 0;
-    left: 0;
+    
+    /* === THAY ĐỔI Ở ĐÂY: ĐỔI TỪ LEFT SANG RIGHT === */
+    right: 0;  /* Cố định bên phải */
+    left: auto; /* Hủy bỏ bên trái */
+    /* ============================================== */
+
     z-index: 100;
     padding: 40px 20px;
     box-sizing: border-box;
     text-align: center;
-    /* Nhớ sửa lại đường dẫn ảnh nền của bạn ở đây nếu cần */
     background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -50,15 +53,19 @@ body {
 .social-icons a { color: #ffffff; margin: 0 10px; font-size: 1.2rem; text-decoration: none; opacity: 0.8; }
 .social-icons a:hover { opacity: 1; }
 
-/* --- 2. KHU VỰC NỘI DUNG --- */
+/* --- 2. KHU VỰC NỘI DUNG (SỬA ĐỂ TRỪ LỀ BÊN PHẢI) --- */
 .content {
-    margin-left: var(--sidebar-width);
+    /* === THAY ĐỔI Ở ĐÂY: MARGIN PHẢI === */
+    margin-right: var(--sidebar-width); /* Chừa chỗ cho sidebar bên phải */
+    margin-left: 0;                     /* Bỏ margin trái */
+    /* =================================== */
+
     width: calc(100% - var(--sidebar-width));
     padding: 40px 60px;
     box-sizing: border-box;
 }
 
-/* --- 3. MENU LỌC (GIỮ NGUYÊN) --- */
+/* --- 3. MENU LỌC --- */
 .category-nav {
     display: flex;
     gap: 30px;
@@ -92,12 +99,12 @@ body {
     font-size: 0.75rem; margin-left: 5px; color: #333;
 }
 
-/* --- 4. THẺ BÀI VIẾT (GIAO DIỆN MỚI - DARK THEME) --- */
+/* --- 4. THẺ BÀI VIẾT --- */
 .post-card {
     display: block;
-    background-color: var(--bg-card); /* Nền tối màu xanh đen */
-    padding: 25px; /* Khoảng cách bên trong card */
-    border-radius: 16px; /* Bo góc card */
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 16px;
     margin-bottom: 30px;
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -105,105 +112,79 @@ body {
 }
 
 .post-card:hover {
-    transform: translateY(-3px); /* Hiệu ứng nổi nhẹ khi di chuột */
+    transform: translateY(-3px);
 }
 
-/* Phần Header chứa Tiêu đề và Meta */
-.post-header {
-    margin-bottom: 20px;
-}
-
+.post-header { margin-bottom: 20px; }
 .post-title {
-    color: var(--text-title); /* Chữ trắng */
+    color: var(--text-title);
     font-size: 1.8rem;
     margin: 0 0 10px 0;
     font-weight: 700;
 }
-
 .post-meta {
-    color: var(--text-meta); /* Chữ màu xanh xám */
+    color: var(--text-meta);
     font-size: 0.95rem;
     margin-bottom: 12px;
     display: flex;
     align-items: center;
 }
-
 .post-description {
-    color: var(--text-title); /* Mô tả màu trắng */
+    color: var(--text-title);
     font-size: 1.1rem;
     line-height: 1.5;
     margin: 0;
 }
 
-/* Ảnh bài viết */
 .post-thumb {
-    width: 100%;       /* Vẫn giữ chiều rộng theo khung */
-    max-height: 350px; /* GIỚI HẠN chiều cao tối đa (bạn có thể giảm xuống 300px nếu muốn nhỏ hơn) */
-    object-fit: cover; /* Tự động cắt bớt phần thừa để ảnh vừa khít khung mà không bị méo */
-    object-fit: contain; /* Hoặc dùng dòng này nếu muốn HIỆN FULL ẢNH (chấp nhận có khoảng trống 2 bên) */
-    
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover; /* Tôi đã sửa lại thành cover để ảnh đẹp hơn */
     border-radius: 8px;
-    border: 1px solid #333; /* Thêm viền mỏng cho ảnh giống terminal */
-    background-color: #000; /* Nền đen nếu ảnh không phủ hết */
+    border: 1px solid #333;
+    background-color: #000;
     display: block;
     margin-top: 15px;
 }
-/* Ẩn bài viết khi lọc */
+
 .post-card.hidden { display: none; }
 
+/* --- 5. RESPONSIVE (MOBILE) --- */
 @media screen and (max-width: 768px) {
     
-    /* 1. Chuyển bố cục từ Ngang sang Dọc */
     body {
-        flex-direction: column;
+        flex-direction: column; /* Xếp dọc: Sidebar lên đầu, Content xuống dưới */
     }
 
-    /* 2. Sidebar: Biến thành header ở trên cùng */
     .sidebar {
-        width: 100%;       /* Chiếm hết chiều ngang */
-        height: auto;      /* Chiều cao tự động theo nội dung */
-        position: relative;/* Không cố định nữa, trôi theo trang */
+        width: 100%;
+        height: auto;
+        position: relative; /* Bỏ cố định để trôi theo trang */
+        right: auto;        /* Reset vị trí */
         padding: 30px 15px;
-        /* Giữ ảnh nền nhưng chỉnh lại cho đẹp trên mobile */
         background-attachment: scroll; 
     }
 
-    /* Thu nhỏ avatar trên điện thoại */
-    .avatar {
-        width: 80px;
-        height: 80px;
-    }
+    .avatar { width: 80px; height: 80px; }
 
-    /* 3. Nội dung chính: Bỏ margin trái */
     .content {
-        margin-left: 0;    /* Bỏ khoảng trống bên trái */
-        width: 100%;       /* Full màn hình */
-        padding: 20px;     /* Giảm padding cho đỡ chật */
+        /* Reset margin cho mobile */
+        margin-right: 0; 
+        margin-left: 0;
+        
+        width: 100%;
+        padding: 20px;
     }
 
-    /* 4. Điều chỉnh Menu lọc */
     .category-nav {
-        gap: 15px;         /* Giảm khoảng cách giữa các mục */
-        overflow-x: auto;  /* Cho phép lướt ngang nếu menu dài */
+        gap: 15px;
+        overflow-x: auto;
         white-space: nowrap;
         padding-bottom: 5px;
     }
 
-    /* 5. Thẻ bài viết */
-    .post-card {
-        height: auto;      /* Chiều cao tự động co dãn */
-    }
-
-    .post-thumb {
-        height: 200px;     /* Ảnh nhỏ lại chút */
-        max-height: 200px;
-    }
-
-    .post-title {
-        font-size: 1.3rem; /* Chữ tiêu đề nhỏ lại cho vừa màn hình */
-    }
-    
-    .post-detail-container {
-        padding: 20px; /* Giảm lề trang chi tiết bài viết */
-    }
+    .post-card { height: auto; }
+    .post-thumb { height: 200px; max-height: 200px; }
+    .post-title { font-size: 1.3rem; }
+    .post-detail-container { padding: 20px; }
 }
