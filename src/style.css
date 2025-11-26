@@ -150,3 +150,60 @@ body {
 }
 /* Ẩn bài viết khi lọc */
 .post-card.hidden { display: none; }
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. Chuyển bố cục từ Ngang sang Dọc */
+    body {
+        flex-direction: column;
+    }
+
+    /* 2. Sidebar: Biến thành header ở trên cùng */
+    .sidebar {
+        width: 100%;       /* Chiếm hết chiều ngang */
+        height: auto;      /* Chiều cao tự động theo nội dung */
+        position: relative;/* Không cố định nữa, trôi theo trang */
+        padding: 30px 15px;
+        /* Giữ ảnh nền nhưng chỉnh lại cho đẹp trên mobile */
+        background-attachment: scroll; 
+    }
+
+    /* Thu nhỏ avatar trên điện thoại */
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* 3. Nội dung chính: Bỏ margin trái */
+    .content {
+        margin-left: 0;    /* Bỏ khoảng trống bên trái */
+        width: 100%;       /* Full màn hình */
+        padding: 20px;     /* Giảm padding cho đỡ chật */
+    }
+
+    /* 4. Điều chỉnh Menu lọc */
+    .category-nav {
+        gap: 15px;         /* Giảm khoảng cách giữa các mục */
+        overflow-x: auto;  /* Cho phép lướt ngang nếu menu dài */
+        white-space: nowrap;
+        padding-bottom: 5px;
+    }
+
+    /* 5. Thẻ bài viết */
+    .post-card {
+        height: auto;      /* Chiều cao tự động co dãn */
+    }
+
+    .post-thumb {
+        height: 200px;     /* Ảnh nhỏ lại chút */
+        max-height: 200px;
+    }
+
+    .post-title {
+        font-size: 1.3rem; /* Chữ tiêu đề nhỏ lại cho vừa màn hình */
+    }
+    
+    .post-detail-container {
+        padding: 20px; /* Giảm lề trang chi tiết bài viết */
+    }
+}
