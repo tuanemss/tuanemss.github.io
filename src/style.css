@@ -1,113 +1,152 @@
-/* Enhanced styles for the beautiful interface */
-
-.guide-card {
-  background: linear-gradient(145deg, #1a1a1a 0%, #222222 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 20px;
-  margin: 30px 0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: left;
-  position: relative;
-  overflow: hidden;
+/* --- CÀI ĐẶT CHUNG & THEME MÀU TỐI --- */
+:root {
+    --sidebar-width: 300px;
+    /* Bộ màu mới dựa trên hình ảnh */
+    --bg-main: #f0f2f5;      /* Nền trang sáng nhẹ */
+    --bg-card: #0a1a1a;      /* Nền card màu xanh đen tối */
+    --text-title: #ffffff;   /* Màu tiêu đề trắng */
+    --text-meta: #8f9f8f;    /* Màu thông tin phụ xanh xám nhạt */
+    --accent-color: #007bff; /* Màu highlight (cho link active) */
 }
 
-.guide-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  border-radius: 20px;
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    display: flex;
 }
 
-.guide-card:hover {
-  background: linear-gradient(145deg, #252525 0%, #2a2a2a 100%);
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+/* --- 1. SIDEBAR (GIỮ NGUYÊN) --- */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    /* Nhớ sửa lại đường dẫn ảnh nền của bạn ở đây nếu cần */
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode: overlay;
+    color: #ffffff;
 }
 
-.guide-card:hover::before {
-  opacity: 0.05;
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid rgba(255,255,255,0.3);
 }
 
-.guide-full-img {
-  width: 100%;
-  max-width: 450px;
-  height: 250px;
-  border-radius: 15px;
-  display: block;
-  margin: 0 auto 20px auto;
-  object-fit: cover;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
+.site-title { margin: 10px 0; color: #ffffff; }
+.site-description { color: #cccccc; margin-bottom: 20px; }
+.social-icons a { color: #ffffff; margin: 0 10px; font-size: 1.2rem; text-decoration: none; opacity: 0.8; }
+.social-icons a:hover { opacity: 1; }
+
+/* --- 2. KHU VỰC NỘI DUNG --- */
+.content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 40px 60px;
+    box-sizing: border-box;
 }
 
-.guide-card:hover .guide-full-img {
-  transform: scale(1.05);
-  border-color: rgba(255, 255, 255, 0.2);
+/* --- 3. MENU LỌC (GIỮ NGUYÊN) --- */
+.category-nav {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 15px;
 }
 
-.guide-card h3 {
-  color: #ffffff;
-  font-size: 26px;
-  margin: 15px 0 10px;
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
+.cat-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    padding-bottom: 15px;
+    position: relative;
 }
 
-.guide-card p {
-  color: #b0b0b0;
-  font-size: 16px;
-  margin: 0;
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
+.cat-link.active {
+    color: #333;
+    font-weight: 700;
 }
 
-/* Additional enhancements */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+.cat-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; width: 100%; height: 2px;
+    background-color: var(--accent-color);
 }
 
-.floating {
-  animation: float 3s ease-in-out infinite;
+.cat-count {
+    background-color: #eee; padding: 2px 8px; border-radius: 10px;
+    font-size: 0.75rem; margin-left: 5px; color: #333;
 }
 
-@keyframes fadeInUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(30px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
+/* --- 4. THẺ BÀI VIẾT (GIAO DIỆN MỚI - DARK THEME) --- */
+.post-card {
+    display: block;
+    background-color: var(--bg-card); /* Nền tối màu xanh đen */
+    padding: 25px; /* Khoảng cách bên trong card */
+    border-radius: 16px; /* Bo góc card */
+    margin-bottom: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-/* Responsive improvements */
-@media (max-width: 768px) {
-  .guide-card {
-    padding: 25px 20px;
-    margin: 20px 0;
-  }
-  
-  .guide-full-img {
-    max-width: 100%;
-    height: 200px;
-  }
-  
-  .guide-card h3 {
-    font-size: 22px;
-  }
+.post-card:hover {
+    transform: translateY(-3px); /* Hiệu ứng nổi nhẹ khi di chuột */
 }
+
+/* Phần Header chứa Tiêu đề và Meta */
+.post-header {
+    margin-bottom: 20px;
+}
+
+.post-title {
+    color: var(--text-title); /* Chữ trắng */
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.post-meta {
+    color: var(--text-meta); /* Chữ màu xanh xám */
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.post-description {
+    color: var(--text-title); /* Mô tả màu trắng */
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Ảnh bài viết */
+.post-thumb {
+    width: 100%;       /* Vẫn giữ chiều rộng theo khung */
+    max-height: 350px; /* GIỚI HẠN chiều cao tối đa (bạn có thể giảm xuống 300px nếu muốn nhỏ hơn) */
+    object-fit: cover; /* Tự động cắt bớt phần thừa để ảnh vừa khít khung mà không bị méo */
+    object-fit: contain; /* Hoặc dùng dòng này nếu muốn HIỆN FULL ẢNH (chấp nhận có khoảng trống 2 bên) */
+    
+    border-radius: 8px;
+    border: 1px solid #333; /* Thêm viền mỏng cho ảnh giống terminal */
+    background-color: #000; /* Nền đen nếu ảnh không phủ hết */
+    display: block;
+    margin-top: 15px;
+}
+/* Ẩn bài viết khi lọc */
+.post-card.hidden { display: none; }
