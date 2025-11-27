@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<link rel="icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" type="text/css" href="../common/general.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
+
+<title>Hacktivation A4 (SIM card required)</title>
+
+</head>
+
+<body>
+
+<div class="main">
+
+<h1>Lockdownd Patch (A4)</h1>
+
+<p align="justify">
+Here i will use IDA pro to do the patch.
+</p>
+
+<img class="align" src="images/idapro.png">
+    
+<p align="justify">
+first open lockdownd with IDA pro, then select <span class="cli">view</span> -> <span class="cli">Open subviews</span> -> <span class="cli">Imports</span>.
+</p>
+
+<p align="justify">
+Now we need to find an exotic function it is SIM check function named <span class="cli">_CTSIMSupportGetSIMStatus</span>.
+<p>
+
+<p align="justify">
+The function <span class="cli">_CTSIMSupportGetSIMStatus</span> is an internal API within the <span class="cli">CoreTelephony Framework</span>, designed to query the readiness state of the SIM.The function returns an integer value in the R0 register (per the ARM calling convention), representing states such as <span class="cli">SIM_STATUS_READY</span>, <span class="cli">SIM_STATUS_NOT_INSERTED</span>, or <span class="cli">SIM_STATUS_LOCKED</span>.
+In the context of <span class="cli">Reverse Engineering</span> the lockdownd process, identifying this function is critical as it serves as the entry point for the subsequent device validation chain. Hacktivation patches operate by intervening in the Control Flow Graph immediately following this function call, specifically by replacing the legitimate BL (Branch with Link) instruction leading to the official validation routine with an B (Unconditional Branch) instruction that redirects execution flow to an injected payload. This payload then proceeds to spoof the necessary SSL/XPC responses, effectively forcing lockdownd to accept a fake activation ticket without authenticating with the Apple servers.
+</p>
+
+<img class="align" src="images/SIM.png">
+
+<p align="justify">
+Now double click on the <span class="cli">_CTSIMSupportGetSIMStatus</span> function ,IDA will take you to the import declaration area.
+</p>
+
+<img class="align" src="images/import.png">
+
+<p align="justify">
+Now right click , select <span class="cli">Jump to xref to operand</span>
+
+A list will appear, listing all the places in the code that are calling this function.
+For me there will be 4 columns to look for in this list, When you find the <span class="cli">MOV R11, R0</span> section located right below the <span class="cli">BLX sub_72C68</span> instruction, that address is where the patch occurs
+</p>
+
+<p align="justify">
+Try clicking on each column one by one until you find the desired result, if you did it correctly it should look like this.
+</p>
+
+<img class="align" src="images/list.png">
+    
+<img class="align" src="images/result.jpg">
+
+<p align="justify">
+Now focus on the function that needs patching <span class="cli">BL sub_146B4</span>  and put the cursor before <span class="cli">BL</span> , then replace the first 4 bytes -> <span class="cli">7D E2 00 00</span>.
+</p>
+
+
+
+<p align="justify">This hexcode is the focus of the patch, it represents a redirection of the execution flow: Specifically, this 4-byte code is inserted in place of the <span class="cli">BL sub_146B4</span> instruction at offset <span class="cli">0xCB0E</span>. Its function is to replace the call to Apple's authenticator function with an unconditional <span class="cli">jump (B 0xD00C)</span>, forcing the program to skip the entire certificate check and SIM validation process. In short, it is a bridge from the original code to the injected <span class="cli">Hacktivation code</span>.
+</p>
+
+<p align="justify">
+The final result should look like this.
+</p>
+
+<img class="align" src="images/final.png">
+
+<br></br>
+
+<p align="justify">
+Finally apply the patch directly in IDA or replace the hex code and put lockdownd back on the device
+with chmod permissions, reboot the device and it will be activated
+</p>
+
+<br></br>
+
+</div>
+
+<footer>
+	Copyright © 2025 — Tuanem's<br>
+	<a href="https://twitter.com/"><img src="../common/twitter.png" height=44 width=44></a>
+	<a href="https://github.com/tuanemss"><img src="../common/github.png" height=44 width=44></a>
+	<a href="mailto:"><img src="../common/mail.png" height=45 width=45></a>
+</footer>
+
+</body>
+</html>
