@@ -3,69 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuanem's Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Tuanem's Blog | iOS Researcher</title>
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
 
     <aside class="sidebar">
         <div class="sidebar-content">
-            <img src="images/toji.jpg" alt="Avatar" class="avatar">
+            <div class="sidebar-top">
+                <div class="avatar-wrapper">
+                    <img src="images/brian.jpg" alt="Avatar" 
+class="avatar">
+                    <div class="status-dot"></div>
+                </div>
+                <h1 class="site-title">Tuanem's</h1>
+                <p class="site-description">iOS Researcher & Developer</p>
+            </div>
             
-            <h1 class="site-title">Tuanem's</h1>
-            <p class="site-description">researcher ios</p>
-            
-            <div class="social-icons">
-                <a href="https://github.com/tuanemss"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fas 
+fa-home"></i> Feed</a>
+                <a href="#" class="nav-item"><i class="fas 
+fa-terminal"></i> Exploits</a>
+                <a href="https://tuanemss.github.io/repo" 
+class="nav-item">
+                    <img src="images/cydia.png" alt="Cydia" 
+class="cydia-icon"> Cydia Repo
+                </a>
+                <a href="#" class="nav-item"><i class="fas 
+fa-archive"></i> Archive</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="social-links">
+                    <a href="https://github.com/tuanemss" 
+target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab 
+fa-x-twitter"></i></a>
+                    <a href="mailto:contact@tuanem.me"><i class="fas 
+fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </aside>
 
     <main class="content">
-        
-        <nav class="category-nav">
-            <a href="#" class="cat-link active" data-filter="feature">Features</a>
-            <a href="#" class="cat-link" data-filter="projects">Tutorials <span class="cat-count">1</span></a>
-            <a href="#" class="cat-link" data-filter="files">Projects <span class="cat-count">1</span></a>
-        </nav>
+        <header class="content-header">
+            <nav class="category-nav">
+                <a href="#" class="cat-link active" 
+data-filter="all">Features</a>
+                <a href="#" class="cat-link" 
+data-filter="tutorials">Tutorials</a>
+                <a href="#" class="cat-link" 
+data-filter="projects">Projects</a>
+            </nav>
+        </header>
 
-        <a href="hacktivation/index.html" class="post-card" data-category="projects">
-            <img src="images/A4.jpeg" alt="Ảnh mô tả" class="post-thumb">
-            <div class="post-overlay">
-                <h2 class="post-title">Hacktivation A4</h2>
-                <span class="post-meta">25/11/2025 • Tutorials</span>
-            </div>
-        </a>
+        <section class="post-grid" id="postGrid">
+            <article class="post-card" data-category="tutorials">
+                <div class="post-thumb-container">
+                    <img src="images/A4.jpeg" alt="A4" class="post-thumb">
+                    <span class="category-tag">Tutorials</span>
+                </div>
+                <div class="post-info">
+                    <a href="hacktivation/index.html" 
+class="post-title-link">
+                        <h2 class="post-title">Hacktivation A4</h2>
+                    </a>
+                    <p class="post-excerpt">Hướng dẫn chi tiết cách vượt 
+qua màn hình kích hoạt trên các thiết bị chip A4 bằng kỹ thuật SSH 
+ramdisk...</p>
+                    <div class="post-meta"><i class="far fa-calendar"></i> 
+25/11/2025</div>
+                </div>
+            </article>
 
-        <a href="link-bai-viet-2.html" class="post-card" data-category="files">
-            <img src="https://images.unsplash.com/photo-1614064641938-3bcee529cfc3?w=800&q=80" alt="Ảnh mô tả" class="post-thumb">
-            <div class="post-overlay">
-                <h2 class="post-title">Tool Jailbreak v1.0 (Download)</h2>
-                <span class="post-meta">20/11/2025 • Files</span>
-            </div>
-        </a>
-
-        <a href="link-bai-viet-3.html" class="post-card" data-category="files">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80" alt="Ảnh mô tả" class="post-thumb">
-            <div class="post-overlay">
-                <h2 class="post-title">Phân tích lỗ hổng Stack Overflow</h2>
-                <span class="post-meta">15/11/2025 • Research</span>
-            </div>
-        </a>
-
-        <a href="#" class="post-card" data-category="files">
-             <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80" class="post-thumb">
-             <div class="post-overlay">
-                 <h2 class="post-title">File cấu hình iBoot Custom</h2>
-                 <span class="post-meta">10/11/2025 • System Files</span>
-             </div>
-        </a>
-
+            <article class="post-card" data-category="projects">
+                <div class="post-thumb-container">
+                    <img 
+src="https://images.unsplash.com/photo-1614064641938-3bcee529cfc3?w=800" 
+alt="Tool" class="post-thumb">
+                    <span class="category-tag">Projects</span>
+                </div>
+                <div class="post-info">
+                    <a href="#" class="post-title-link">
+                        <h2 class="post-title">Tool Jailbreak v1.0</h2>
+                    </a>
+                    <p class="post-excerpt">Một công cụ mã nguồn mở hỗ trợ 
+quy trình nghiên cứu lỗ hổng bảo mật trên các phiên bản iOS cũ...</p>
+                    <div class="post-meta"><i class="far fa-calendar"></i> 
+20/11/2025</div>
+                </div>
+            </article>
+        </section>
     </main>
 
     <script src="src/script.js"></script>
-
 </body>
 </html>
