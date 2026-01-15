@@ -1,106 +1,83 @@
-/* =========================================
-   CSS CHO TRANG CHI TIẾT BÀI VIẾT (POST DETAIL)
-   ========================================= */
+/* --- CSS Tối ưu cho trang bài viết riêng --- */
+.single-post-page {
+    display: block !important; /* Tắt chế độ flex của trang chủ */
+    background: #f5f5f7 !important;
+}
+
+.single-post-page .sidebar {
+    display: none !important; /* Ẩn sidebar hoàn toàn trên trang này */
+}
+
+.single-post-page .content {
+    margin-left: 0 !important; /* Đẩy nội dung ra giữa màn hình */
+    width: 100%;
+    padding: 0;
+}
 
 .post-detail-container {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    max-width: 900px; /* Giới hạn chiều rộng để dễ đọc */
-    margin: 0 auto; /* Căn giữa */
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 60px 40px;
+    min-height: 100vh;
 }
 
 /* Nút quay lại */
 .back-btn {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
-}
-.back-btn:hover {
-    text-decoration: underline;
+    color: #0071e3;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
 }
 
-/* Tiêu đề bài viết */
 .article-title {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    font-weight: 800;
     margin-bottom: 10px;
-    line-height: 1.2;
+    color: #1d1d1f;
 }
 
 .article-meta {
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    color: #86868b;
     display: block;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
 }
 
-/* Nội dung bài viết */
-.article-content {
-    line-height: 1.8;
-    color: #333;
-    font-size: 1.1rem;
-}
+/* Định dạng nội dung bài viết */
+.article-content h2 { margin-top: 40px; margin-bottom: 15px; font-size: 1.6rem; }
+.article-content p { line-height: 1.7; margin-bottom: 20px; color: #333; }
+.article-content img { width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid #eee; }
 
-.article-content h2 {
-    margin-top: 40px;
-    color: var(--primary-color);
-    border-bottom: 2px solid #f5f5f7;
-    padding-bottom: 10px;
-}
-
-.article-content ul {
+/* Khung Code (Terminal) */
+pre {
+    background: #1d1d1f;
+    padding: 15px 20px;
+    border-radius: 12px;
+    overflow-x: auto;
     margin-bottom: 20px;
 }
-
-.article-content li {
-    margin-bottom: 10px;
+pre code {
+    color: #fff;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 0.9rem;
 }
 
-.article-content a {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-/* Style cho khối Code (giống style cũ của bạn) */
-.article-content pre {
-    background-color: #1a1a1a;
-    color: #ccc;
-    padding: 15px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 20px 0;
-}
-
-.article-content code {
-    background-color: #222;
-    color: #ff7b72; /* Màu code nổi bật */
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.9em;
-}
-
-/* Khối lưu ý (Alert box) */
+/* Box lưu ý */
 .alert-box {
-    border-left: 4px solid #ff9800;
-    padding: 15px 20px;
-    background-color: #fff8e1;
-    color: #5d4037;
+    background: #fff2f2;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #ffcfcf;
     margin: 30px 0;
-    border-radius: 0 8px 8px 0;
 }
+.alert-box h3 { color: #ff3b30; margin-top: 0; }
 
-.article-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin: 20px 0;
+/* Mobile */
+@media (max-width: 768px) {
+    .post-detail-container { padding: 40px 20px; }
+    .article-title { font-size: 1.8rem; }
 }
