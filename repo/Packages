@@ -380,6 +380,26 @@ Author: T.Herak <50dc856b@opayq.com>
 Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
 Name: redeb
 
+Package: kloader
+Version: 1.0.2
+Architecture: iphoneos-arm
+Maintainer: axi0mX
+Depends: firmware (>= 4.0)
+Filename: debs/kloader_1.0.2_iphoneos-arm.deb
+Size: 12486
+MD5sum: fef541ee1d6b691b4e6b6b7f9b03c938
+SHA1: da518309bf316682f32d8d644413598902016c2d
+SHA256: a472328bf6e1d110b2a042679bce73a36a983f34e760fb4c0161c6f2dbbd0347
+Section: System
+Priority: optional
+Homepage: https://github.com/axi0mX/ios-kexec-utils/blob/master/kloader.c
+Description: NEW IMPROVED KLOADER
+ armv7 support for iOS 4.0-9.3.5 (requires tfp0 kernel patch)
+ arm64 support for iOS 7.0-8.4.1 (requires tfp0 kernel patch and patched LLB/iBoot/iBSS/iBEC)
+ will automatically wake up device after 2 seconds (no button press required, should work 99.9% of the time)
+Author: winocm, xerub, axi0mX
+Name: kloader
+
 Package: neofetch
 Version: 7.1.0.2
 Architecture: iphoneos-arm
