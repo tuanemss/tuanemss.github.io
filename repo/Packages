@@ -363,6 +363,22 @@ Tag: role::hacker
 Author: tuanem
 Name: SHSHchecker cli
 
+Package: com.tuanem.ytbackground
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Tuanem
+Installed-Size: 40
+Depends: mobilesubstrate
+Filename: debs/com.tuanem.ytbackground_1.0_iphoneos-arm.deb
+Size: 4990
+MD5sum: 93e7ac8e7d8393f318977bfe87f1f8ac
+SHA1: 86be0940de4628a8de2cf0686ca9c872806b748d
+SHA256: 8ea4e3c8163d7ee030158d6fadd25cdd91cf19c081349c3f0ba913a3ba427ff3
+Section: Tweaks
+Description: Background Playback for YouTube 1.0.0+
+Author: Tuanem
+Name: YTBackground
+
 Package: com.vsz.redeb
 Version: 1.0.3
 Architecture: iphoneos-arm
