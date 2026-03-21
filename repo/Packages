@@ -386,10 +386,10 @@ Maintainer: Tuanem
 Installed-Size: 40
 Depends: mobilesubstrate
 Filename: debs/com.tuanem.ytbackground_1.1_iphoneos-arm.deb
-Size: 5068
-MD5sum: 0e1407f3fb06affff7fd18747c3de901
-SHA1: 730b8fda4d0e3882066e65eb0ba3554f27d9c7a6
-SHA256: 5521f2cf8735ee2995407dd89c8432856e948b4e5efe943d4c0f675672ae4fb9
+Size: 5118
+MD5sum: 8f9f2f630990dd881b5323be5f68a4bd
+SHA1: 84efb60e83e84ba6ecfb33df9ba39609687c3f56
+SHA256: 9fec3d8ea6385507582c1defffa6bd5a398076512934f83370e391d4711cb958
 Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
