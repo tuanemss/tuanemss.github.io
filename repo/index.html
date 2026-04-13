@@ -2,82 +2,74 @@
 <html lang="vi">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cydia Repo | Tuanem's Blog</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../src/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cydia | Tuanem Repo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../src/cydia_retro.css">
 </head>
 
-<body>
+<body class="cydia-body">
 
-  <aside class="sidebar">
-    <div class="sidebar-content">
-      <div class="sidebar-top">
-        <div class="sidebar-top-left">
-          <div class="avatar-wrapper">
-            <img src="../images/brian.jpg" alt="Avatar" class="avatar">
-          </div>
-          <div class="site-info-mobile">
-            <h1 class="site-title">Tuanem's</h1>
-            <p class="site-description">iOS Researcher & Developer</p>
-          </div>
+    <div class="cydia-web-container">
+        
+        <header class="cydia-web-header">
+            <img src="../images/cydia.png" alt="Cydia" class="cydia-web-icon">
+            <div class="cydia-web-header-text">
+                <h1>Welcome to Cydia</h1>
+                <p>by Tuanem (tuanemss)</p>
+            </div>
+        </header>
+
+        <section class="cydia-btn-group">
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io/repo" class="cydia-web-btn">
+                <img src="" alt="" class="custom-icon">
+                <span class="label">Add to Cydia</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <a href="sileo://source/https://tuanemss.github.io/repo" class="cydia-web-btn">
+                <img src="" alt="" class="custom-icon">
+                <span class="label">Add to Sileo</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <a href="zbra://sources/add/https://tuanemss.github.io/repo" class="cydia-web-btn">
+                <img src="" alt="" class="custom-icon">
+                <span class="label">Add to Zebra</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+        </section>
+
+        <section class="cydia-btn-group" style="margin-top: 25px;">
+            <a href="https://github.com/tuanemss" target="_blank" class="cydia-web-btn">
+                <img src="" alt="" class="custom-icon">
+                <span class="label">GitHub Profile</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+            <a href="../index.html" class="cydia-web-btn">
+                <img src="" alt="" class="custom-icon">
+                <span class="label">Back to Blog</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </a>
+        </section>
+
+        <div class="cydia-web-content-box">
+            <p>
+                Tuanem Repository is an alternative source for specialized "jailbroken" scripts and tools, focusing on Apple A4 chipset research and legacy iOS customization.
+            </p>
+            <p>
+                This repository is not affiliated with SaurikIT, nor is it an official app store. It is provided for educational and research purposes only.
+            </p>
+            <p>
+                For technical guides and walkthroughs, visit my <a href="../index.html">Main Blog</a> or follow me on <a href="https://github.com/tuanemss">GitHub</a>.
+            </p>
         </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
 
-      <nav class="sidebar-nav">
-        <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> <span>Feed</span></a>
-        <a href="../index.html" class="nav-item"><i class="fas fa-terminal"></i> <span>Exploits</span></a>
-        <a href="#" class="nav-item active">
-          <img src="../images/cydia.png" alt="Cydia" class="cydia-icon"> <span>Cydia Repo</span>
-        </a>
-        <a href="#" class="nav-item"><i class="fas fa-archive"></i> <span>Archive</span></a>
-      </nav>
+        <footer style="text-align: center; margin-top: 40px; color: #888; font-size: 13px;">
+            <p>&copy; 2025 Tuanem's Research. Inspired by SaurikIT.</p>
+        </footer >
 
-      <div class="sidebar-footer">
-        <div class="social-links">
-          <a href="https://github.com/tuanemss" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-          <a href="mailto:contact@tuanem.me"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
     </div>
-  </aside>
 
-  <main class="content">
-    <article class="post-content">
-      <div class="center-text">
-        <img src="../images/cydia.png" alt="Cydia Repo"
-          style="width: 80px; height: 80px; border-radius: 20px; box-shadow: 0 4px 15px var(--shadow); margin-bottom: 20px;">
-        <h1>Tuanem's Repo</h1>
-        <p>Kho lưu trữ các tinh chỉnh, công cụ và tiện ích cho thiết bị iOS đã Jailbreak.</p>
-
-        <div class="callout" style="text-align: left;">
-          <p style="margin-bottom: 5px;"><strong>Repo URL:</strong></p>
-          <code
-            style="display: block; padding: 10px; background: var(--hover-bg); border-radius: 8px; user-select: all;">https://tuanemss.github.io/repo</code>
-        </div>
-
-        <div class="repo-btn-group">
-          <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tuanemss.github.io/repo"
-            class="repo-btn">
-             Thêm vào Cydia
-          </a>
-          <a href="sileo://source/https://tuanemss.github.io/repo" class="repo-btn">
-             Thêm vào Sileo
-          </a>
-          <a href="zbra://sources/add/https://tuanemss.github.io/repo" class="repo-btn">
-             Thêm vào Zebra
-          </a>
-        </div>
-      </div>
-    </article>
-  </main>
-
-  <script src="../src/script.js"></script>
 </body>
 
 </html>

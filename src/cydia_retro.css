@@ -1,0 +1,119 @@
+/* CYDIA WEB PORTAL STYLE (MATCHING SAURIK.COM SCREENSHOT) */
+
+:root {
+    --cydia-top-bar: #6d453b; /* Dark brown from screenshot */
+    --cydia-bg: #f2f2f2;
+    --cydia-content-bg: #ffffff;
+    --cydia-border: #dcdcdc;
+    --facebook-blue: #3b5998;
+    --twitter-blue: #00aced;
+    --sileo-purple: #ae63e4;
+}
+
+body.cydia-body {
+    background-color: var(--cydia-bg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.cydia-web-container {
+    max-width: 600px;
+    margin: 50px auto; /* Increased margin after removing top bar */
+    padding: 0 15px;
+}
+
+/* HEADER SECTION */
+.cydia-web-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.cydia-web-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+}
+
+.cydia-web-header-text {
+    text-align: left;
+}
+
+.cydia-web-header-text h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: normal;
+}
+
+.cydia-web-header-text p {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    color: #4787ed; /* Link blue */
+}
+
+/* BUTTONS STYLE (SOCIAL STYLE) */
+.cydia-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 20px;
+    border: 1px solid var(--cydia-border);
+}
+
+.cydia-web-btn {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    border-bottom: 1px solid var(--cydia-border);
+}
+
+.cydia-web-btn:last-child {
+    border-bottom: none;
+}
+
+.cydia-web-btn .custom-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    margin-right: 12px;
+    background-color: #eee; /* Light placeholder color */
+    object-fit: cover;
+}
+
+.cydia-web-btn .label {
+    flex: 1;
+}
+
+.cydia-web-btn i.chevron {
+    color: #999;
+}
+
+/* CONTENT BOX */
+.cydia-web-content-box {
+    background: white;
+    border: 1px solid var(--cydia-border);
+    padding: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cydia-web-content-box p {
+    margin: 0 0 15px 0;
+}
+
+.cydia-web-content-box a {
+    color: #2a7ae2;
+    text-decoration: none;
+}
+
+.cydia-web-content-box a:hover {
+    text-decoration: underline;
+}
