@@ -1,52 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Category filter functionality
-    const catLinks = document.querySelectorAll('.cat-link');
-    const postCards = document.querySelectorAll('.post-card');
+    // Menu Dropdown Logic
+    const menuToggleOpen = document.getElementById('menuToggleOpen');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    catLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            catLinks.forEach(item => item.classList.remove('active'));
-            link.classList.add('active');
-
-            const filter = link.getAttribute('data-filter');
-            postCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // Dark mode toggle functionality
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const html = document.documentElement;
-
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-
-    function updateThemeIcon(theme) {
-        if (theme === 'dark') {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+    const toggleMenu = () => {
+        const isActive = menuOverlay.classList.contains('active');
+        if (isActive) {
+            menuOverlay.classList.remove('active');
         } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+            menuOverlay.classList.add('active');
         }
+    };
+
+    if (menuToggleOpen) {
+        menuToggleOpen.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
     }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (menuOverlay && menuOverlay.classList.contains('active')) {
+            if (!menuOverlay.contains(e.target) && e.target !== menuToggleOpen) {
+                menuOverlay.classList.remove('active');
+            }
+        }
+    });
 });

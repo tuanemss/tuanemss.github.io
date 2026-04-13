@@ -4,103 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tuanem's Blog | iOS Researcher</title>
+    <title>Tuanem's Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
 
-    <aside class="sidebar">
-        <div class="sidebar-content">
-            <div class="sidebar-top">
-                <div class="sidebar-top-left">
-                    <div class="avatar-wrapper">
-                        <img src="images/brian.jpg" alt="Avatar" class="avatar">
-                    </div>
-                    <div class="site-info-mobile">
-                        <h1 class="site-title">Tuanem's</h1>
-                        <p class="site-description">iOS Researcher & Developer</p>
-                    </div>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+    <header class="site-header container">
+        <a class="site-title" href="index.html">Tuanem's Blog</a>
+        <button class="hamburger-btn" id="menuToggleOpen" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
 
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active"><i class="fas fa-home"></i> <span>Feed</span></a>
-                <a href="#" class="nav-item"><i class="fas fa-terminal"></i> <span>Exploits</span></a>
-                <a href="repo/index.html" class="nav-item">
-                    <img src="images/cydia.png" alt="Cydia" class="cydia-icon"> <span>Cydia Repo</span>
-                </a>
-                <a href="#" class="nav-item"><i class="fas fa-archive"></i> <span>Archive</span></a>
-            </nav>
+    <div class="menu-overlay" id="menuOverlay">
+        <a href="index.html">Trang chủ</a>
+        <a href="#">Blog</a>
+        <a href="#">Projects</a>
+        <a href="repo/index.html">Cydia Repo</a>
+    </div>
 
-            <div class="sidebar-footer">
-                <div class="social-links">
-                    <a href="https://github.com/tuanemss" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                    <a href="mailto:contact@tuanem.me"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <main class="content">
-        <header class="content-header">
-            <nav class="category-nav">
-                <a href="#" class="cat-link active" data-filter="all">Features</a>
-                <a href="#" class="cat-link" data-filter="tutorials">Tutorials</a>
-                <a href="#" class="cat-link" data-filter="projects">Projects</a>
-            </nav>
-        </header>
-
-        <section class="post-grid">
-            <article class="post-card" data-category="tutorials">
-                <div class="post-thumb-container">
-                    <img src="images/A4.jpeg" alt="A4" class="post-thumb">
-                    <span class="category-tag">Tutorials</span>
-                </div>
-                <div class="post-info">
-                    <a href="hacktivation/index.html" class="post-title-link">
-                        <h2 class="post-title">Hacktivation A4</h2>
-                    </a>
-                    <p class="post-excerpt">Hướng dẫn vượt qua Setup.app trên chip A4 bằng SSH ramdisk...</p>
-                    <div class="post-meta"><i class="far fa-calendar"></i> 25/11/2025</div>
-                </div>
-            </article>
-
-            <article class="post-card" data-category="tutorials">
-                <div class="post-thumb-container">
-                    <img src="ipt4dualboot/1.png" alt="IPT4" class="post-thumb">
-                    <span class="category-tag">Tutorials</span>
-                </div>
-                <div class="post-info">
-                    <a href="ipt4dualboot/guide1.html" class="post-title-link">
-                        <h2 class="post-title">iPod touch 4 Dualboot iOS 7</h2>
-                    </a>
-                    <p class="post-excerpt">Hướng dẫn Dualboot iOS 7 trên iPod touch 4...</p>
-                    <div class="post-meta"><i class="far fa-calendar"></i> 24/11/2025</div>
-                </div>
-            </article>
-
-            <article class="post-card" data-category="projects">
-                <div class="post-thumb-container">
-                    <img src="https://images.unsplash.com/photo-1614064641938-3bcee529cfc3?w=800" alt="Tool"
-                        class="post-thumb">
-                    <span class="category-tag">Projects</span>
-                </div>
-                <div class="post-info">
-                    <a href="#" class="post-title-link">
-                        <h2 class="post-title">Tool Jailbreak v1.0</h2>
-                    </a>
-                    <p class="post-excerpt">Công cụ hỗ trợ nghiên cứu lỗ hổng bảo mật iOS...</p>
-                    <div class="post-meta"><i class="far fa-calendar"></i> 20/11/2025</div>
-                </div>
-            </article>
-        </section>
+    <main class="container">
+        <ul class="post-list">
+            <li class="post-item">
+                <span class="post-meta">Nov 25, 2025</span>
+                <a class="post-link" href="hacktivation/index.html">Hacktivation A4 (SIM card required)</a>
+            </li>
+            <li class="post-item">
+                <span class="post-meta">Nov 24, 2025</span>
+                <a class="post-link" href="#">iPod touch 4 Dualboot iOS 7</a>
+            </li>
+            <li class="post-item">
+                <span class="post-meta">Nov 20, 2025</span>
+                <a class="post-link" href="#">Tool Jailbreak v1.0 Release</a>
+            </li>
+        </ul>
     </main>
+
+    <footer class="site-footer container">
+        <div class="social-links">
+            <a href="https://github.com/tuanemss" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" target="_blank" class="social-link"><i class="fab fa-x-twitter"></i> X</a>
+            <a href="#" target="_blank" class="social-link"><i class="fab fa-discord"></i> Discord</a>
+            <a href="mailto:contact@tuanem.me" class="social-link"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+        <p>&copy; 2025 Tuanem's Blog</p>
+    </footer>
 
     <script src="src/script.js"></script>
 </body>
