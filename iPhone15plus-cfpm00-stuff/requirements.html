@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<link rel="icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" type="text/css" href="../src/general.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
+
+<title>iPhone15 Plus CPFM00/01 Stuff - Requirements</title>
+
+</head>
+
+<body>
+
+<div class="main">
+
+<h1>Requirements</h1>
+<p align="justify">
+<h2>Hardware</h2>
+<ul>
+<li>
+	- MacOS 12 (I think so, and under iOS 26).You need to use a slightly newer version of macOS to be able to use the tools, and if possible, use Apple Silicon (M series chip).<br></br>
+
+	- A DCSD cable or Chipm (if you are using an Intel Mac, a Chipm is required to jtag) to view UART logs and diags shell, jtag.<br></br>
+    - For Apple silicon, you only need a standard C to C cable for JTAG. Below are some illustrative images.<br></br>
+    <div class="image-container">
+    <img src="resources/chimp.jpeg" alt="Image 1">
+    <img src="resources/DCSD_cable.jpeg" alt="Image 2">
+    <img src="resources/C_to_C.jpeg" alt="Image 3">
+   </div>
+
+<li>Device :
+<br></br>
+	<ul>
+		<li>iPhone 15plus CPFM00</li>
+		<li>iPhone 15plus CPFM01</li>
+	</ul>
+</li>
+</ul>
+
+<h2>Software</h2>
+<h4>Mac only</h4>
+<ul>
+<li>HomeDiagnostic_Sunburst23A313: You can easily find it on Google.<br></br></li>
+<li>iRecovery : Allows interacting with DFU and recovery modes and includes an interactive recovery mode shell.<br></br></li>
+<li>Anya: iBoot/SEPOS decryption kit for JTAGgable iOS device prototypes.<br><br></li>
+<li>img4lib: unpakc and repack bootchain.<br><br></li>
+<li>SSH and SCP client : Interactive command line and files transfert from computer to iOS device.<br></br>
+	- On MacOS, ssh and scp are usually built-in in the OS. If you prefer a GUI tool, you can use PuTTY for interactive shell and FileZilla to replace SCP.<br></br></li>
+
+<li>ARM binary disassembler : IDA (best), Hopper (affordable) or Ghidra (free and openb-source, recommanded)</li>
+<li>Hex editor : I recommand Hexfined.</li>
+</ul>
+<br></br>
+</p>
+<br><br>
+<center><a href="introduction.html" class="menu"><b>> Introduction:</b> Introduction</a></center><br>
+</div>
+
+<footer>
+	Copyright © 2026 — Tuanem<br>
+	<a href="https://twitter.com/tuanem6996"><img src="../src/twitter.png" height=44 width=44></a>
+	<a href="https://github.com/tuanemss"><img src="../src/github.png" height=44 width=44></a>
+	<a href="mailto:xxx"><img src="../src/mail.png" height=45 width=45></a>
+</footer>
+
+</body>
+</html>

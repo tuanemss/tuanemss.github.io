@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+<link rel="icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" type="text/css" href="../src/general.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
+
+<title>iPhone15 Plus CPFM00/01 Stuff - Extract Bootchain and APTicket</title>
+
+</head>
+
+<body>
+
+<div class="main">
+
+<h1>Extract bootchain and APTicket</h1>
+
+
+Here I will address 2 cases. First, if you have a switch, get iBoot, APTicket, and kernel from /private/preboot/ via ssh.
+<br></br>
+<code>$: iproxy 2222 22</code>
+<br></br>
+<code>$: ssh root@localhost -p2222</code>
+<br></br>
+<code>passwword: alpine</code>
+<br></br>
+
+If the device is LLDiags (Low Level Diags), please see the following instructions.
+<br></br>
+
+<br></br>
+Your device is currently in recovery mode. Access the iBoot shell and enter the command 
+<br></br>
+<code>]diags</code>
+<br></br>
+To find where iBoot, APTicket, kernel is located, enter the command map to find preboot
+<br></br>
+<code>[xxxxxx-xxxxx] :-) map</code>
+<br></br>
+<img class="align" src="resources/list_filesystem.png">
+<br></br>
+In this case, my iboot, APTicket, kernel is in FS4. I will provide the path and how to extract it. Please follow these steps.
+<br></br>
+Please note your FS may not be the same as mine. Make sure it is a preboot like the picture I provided.
+<br></br>
+This command will list the contents of this folder,this is just an example of how to search, don't worry, I will provide the path.
+<br></br>
+<code>[xxxxxx-xxxxx] :-) Ls FS4:\usr\standalone\firmware\</code>
+<br></br>
+Next, we'll discuss how to extract them. Interestingly, we need those three files to boot the ramdisk.Instructions on how to create restore ramdisk will be provided later.
+<br></br>
+Now we will create a new folder to copy those files.
+<br></br>
+<code>$: mkdir -p ~/Desktop/FS4</code>
+<br></br>
+Now open a new terminal tab and enter the following command.
+<br></br>
+<code>$: usbfs -f ~/Desktop/FS4</code>
+<br></br>
+In the diag, run the following command.
+<br></br>
+<code>[xxxxxx-xxxxx] :-) usbfs --mount</code>
+<br></br>
+Great! Now let's copy those files into the FS4 folder.
+<br></br>
+<code>[xxxxxx-xxxxx] :-) cp FS4:\System\Library\Caches\apticket.der usbfs:\apticket.der</code>
+<br></br>
+<code>[xxxxxx-xxxxx] :-) cp FS4:\System\Library\Caches\com.apple.kernelcaches\kernelcache 
+usbfs:\kernelcache</code>
+<br></br>
+<code>[xxxxxx-xxxxx] :-) cp FS4:\usr\standalone\firmware\iBoot.img4 usbfs:\iBoot.img4</code>
+<br></br>
+<img class="align" src="resources/done.png">
+<br></br>
+Done!, so you've got the iboot. Next, let's decrypt it.
+<br></br>
+
+
+<center><a href="decrypt_and_patch_iboot.html" class="menu"><b>> Part 2:</b> Decrypt and patch iBoot dumped</a></center><br>
+</div>
+
+<footer>
+	Copyright © 2026 — Tuanem<br>
+	<a href="https://twitter.com/tuanem6996"><img src="../common/twitter.png" height=44 width=44></a>
+	<a href="https://github.com/tuanemss"><img src="../common/github.png" height=44 width=44></a>
+	<a href="mailto:xxx"><img src="../common/mail.png" height=45 width=45></a>
+</footer>
+
+</body>
+</html>

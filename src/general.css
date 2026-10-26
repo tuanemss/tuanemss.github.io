@@ -98,3 +98,17 @@ div.desc {
 	text-align: center;
 	color: gray;
 }
+
+div.image-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin: 15px 0;
+}
+
+div.image-container img {
+	display: inline-block;
+	width: 32%;
+	height: auto;
+}
